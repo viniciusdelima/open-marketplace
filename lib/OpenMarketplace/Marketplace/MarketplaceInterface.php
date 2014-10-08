@@ -5,12 +5,12 @@
  * Esta interface provê para a entidade Marketplace os principais métodos e ações presentes em todos marketplaces
  *
  * @author Vinícius C. de Lima <vinicius.c.lima03@gmail.com>
- * @link http://about.me/viniciusdelima
+ * @package Marketplace
  */
 
-namespace OpenMarketplace\Marketplace
+namespace OpenMarketplace\Marketplace;
 
-interface Marketplace {
+interface MarketplaceInterface {
     /**
      * Conecta ao Marketplace.
      * 
@@ -57,4 +57,22 @@ interface Marketplace {
      * @return boolean
      */
     public function updateOrder($Order);
+    
+    /**
+     * Retorna um conjunto de Produtos
+     * Se offset for igual a 0, então o método retornará todos os produtos
+     * 
+     * @param int $offset
+     * @return Collection Coleção de Produtos
+     */
+    public function getProducts($offset = 0);
+    
+    /**
+     * Retorna um conjunto de Pedidos
+     * Se offset for igual a 0, então o método retornará todos os pedidos
+     * 
+     * @param int $offset
+     * @return Collection Coleção de Pedidos
+     */
+    public function getOrders($offset = 0);
 }
