@@ -12,11 +12,19 @@ namespace OpenMarketplace\Marketplace;
 
 interface MarketplaceInterface {
     /**
+     * Seta um token para o Marketplace
+     * 
+     * @param string $token
+     * @return void
+     */
+    public function setToken($token);
+    
+    /**
      * Conecta ao Marketplace.
      * 
      * @return boolean
      */
-    public function connect();
+    public function authenticate();
     
     /**
      * Envia um produto ao Marketplace.

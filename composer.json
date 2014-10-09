@@ -1,0 +1,27 @@
+{
+    "name" : "Open Marketplace",
+    "description" : "Biblioteca de base para integração entre ecommerces e marketplaces",
+    "keywords" : [
+        "marketplace",
+        "submarino",
+        "walmart",
+        "mercadolivre",
+        "sdk",
+        "marketplace sdk"
+    ],
+    "homepage" : "https://github.com/viniciusdelima/open-marketplace",
+    "require" : {
+        "aura/autoload": "dev-master",
+        "shuber/curl": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "OpenMarketplace\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "OpenMarketplaceTest\\": "tests/"
+        }
+    }
+}
