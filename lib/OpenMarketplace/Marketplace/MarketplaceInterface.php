@@ -19,20 +19,29 @@ interface MarketplaceInterface {
      */
     public function setToken($token);
     
-    /**
-     * Conecta ao Marketplace.
+     /**
+     * Seta o token de sandbox
      * 
-     * @return boolean
+     * @param string $sandboxToken
+     * @return void
      */
-    public function authenticate();
+    public function setSandboxToken($sandboxToken);
     
     /**
-     * Envia um produto ao Marketplace.
+     * Seta o Marketplace para o modo sandbox
+     * 
+     * @param boolean $mode
+     * @return void
+     */
+    public function setSandboxMode($mode);
+    
+    /**
+     * Adiciona um produto ao Marketplace.
      * 
      * @param Product $Product
      * @return void
      */
-    public function sendProduct($Product);
+    public function addProduct($Product);
     
     /**
      * Atualiza um produto no Marketplace
@@ -51,12 +60,12 @@ interface MarketplaceInterface {
     public function updateStock($Product);
     
     /**
-     * Envia um pedido ao Marketplace
+     * Adiciona um pedido ao Marketplace
      * 
      * @param Order $Order
      * @return void
      */
-    public function sendOrder($Order);
+    public function addOrder($Order);
     
     /**
      * Atualiza um Pedido no Marketplace
@@ -83,4 +92,12 @@ interface MarketplaceInterface {
      * @return Collection Coleção de Pedidos
      */
     public function getOrders($offset = 0);
+    
+    /**
+     * Salva os dados do Marketplace efetivamente
+     * Este método é o responsável por salvar os dados da Entidade Marketplace no Marketplace real
+     * 
+     * @return void
+     */
+    public function save();
 }
