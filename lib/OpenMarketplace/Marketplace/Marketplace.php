@@ -131,6 +131,40 @@ abstract class Marketplace implements MarketplaceInterface {
      * @see MarketplaceInterface::updateProduct($Product)
      */
     public function updateProduct(Product $Product) {
-        
+        $this->products->update($Product);
+    }
+    
+    /**
+     * Método abstrato de atualização de estoque do Marketplace
+     * 
+     * @see MarketplaceInterface::updateStock($Product)
+     */
+    abstract protected function updateStock(Product $Product);
+    
+    /**
+     * Atualiza um Pedido no Marketplace
+     * 
+     * @see MarketplaceInterface::updateOrder($Order)
+     */
+    public function updateOrder(Order $Order) {
+        $this->orders->update($Order);
+    }
+    
+    /**
+     * Retorna os produtos do Marketplace
+     * 
+     * @see MarketplaceInterface::getProducts()
+     */
+    public function getProducts() {
+        return $this->products->getEntries();
+    }
+    
+    /**
+     * Retorna os pedidos do Marketplace
+     * 
+     * @see MarketplaceInterface::getOrders()
+     */
+    public function getOrders() {
+        return $this->orders->getEntries();
     }
 }

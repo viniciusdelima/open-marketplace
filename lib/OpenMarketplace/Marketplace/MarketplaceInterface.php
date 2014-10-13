@@ -60,14 +60,6 @@ interface MarketplaceInterface {
     public function updateStock($Product);
     
     /**
-     * Adiciona um pedido ao Marketplace
-     * 
-     * @param Order $Order
-     * @return void
-     */
-    public function addOrder($Order);
-    
-    /**
      * Atualiza um Pedido no Marketplace
      * 
      * @param Order $Order
@@ -77,27 +69,15 @@ interface MarketplaceInterface {
     
     /**
      * Retorna um conjunto de Produtos
-     * Se offset for igual a 0, então o método retornará todos os produtos
      * 
-     * @param int $offset
      * @return Collection Coleção de Produtos
      */
-    public function getProducts($offset = 0);
+    public function getProducts();
     
     /**
      * Retorna um conjunto de Pedidos
-     * Se offset for igual a 0, então o método retornará todos os pedidos
      * 
-     * @param int $offset
      * @return Collection Coleção de Pedidos
      */
-    public function getOrders($offset = 0);
-    
-    /**
-     * Salva os dados do Marketplace efetivamente
-     * Este método é o responsável por salvar os dados da Entidade Marketplace no Marketplace real
-     * 
-     * @return void
-     */
-    public function save();
+    public function getOrders();
 }
