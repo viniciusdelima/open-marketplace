@@ -9,6 +9,7 @@
  */
 
 namespace OpenMarketplace\Object;
+use OpenMarketplace\Object\Exceptions\TypeMismatchException as TypeMismatchException;
 
 class Collection implements CollectionInterface {
 	/**
@@ -25,26 +26,26 @@ class Collection implements CollectionInterface {
 	 * @access protected
 	 * @var string
 	 */
-	protected $type;
+	protected $type = 'Object';
 	
 	/**
 	 * Construtor da classe.
 	 * 
 	 * @return void
 	 */
-	public function __construct($type) {
-		$this->type = $type;
-		$this->entries = new ArrayObject();
+	public function __construct($type = null) {
+		null !== $type ? $this->type = $type : $type;
+		$this->entries = new \ArrayObject();
 	}
 	
 	/**
 	 * Adiciona um elemento no final da coleção de elementos atual.
 	 * 
-	 * @see CollectionInterface::push($element)
+	 * @see CollectionInterface::push($Element)
 	 */
-	public function push($element) {
-		if ($element instanceof $this->type) {
-			$this->entries->append($element);
+	public function push($Element) {
+		if ($Element instanceof $this->type) {
+			$this->entries->append($Element);
 		}
 		else {
 			throw new TypeMismatchException();

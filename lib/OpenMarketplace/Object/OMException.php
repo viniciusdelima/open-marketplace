@@ -10,7 +10,7 @@
 
 namespace OpenMarketplace\Object;
     
-class OMException extends Exception {
+class OMException extends \Exception {
     /**
      * Construtor da classe pai.
      * 

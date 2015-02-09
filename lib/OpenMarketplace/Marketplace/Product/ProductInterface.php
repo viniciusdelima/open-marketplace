@@ -5,10 +5,10 @@
  * Esta interface irá fornecer os métodos necessários a qualquer Product dentro do Marketplace
  *
  * @author Vinícius C. de Lima <vinicius.c.lima03@gmail.com>
- * @package Marketplace
+ * @package Marketplace.Product
  */
 
-namespace OpenMarketplace\Marketplace;
+namespace OpenMarketplace\Marketplace\Product;
     
 interface ProductInterface {
     /**

@@ -4,7 +4,7 @@
  * Entidade responsável por gerenciar uma coleção de produtos.
  *
  * @author Vinícius C. de Lima <vinicius.c.lima03@gmail.com>
- * @package Marketplace
+ * @package Marketplace.Product
  */
 
 namespace OpenMarketplace\Marketplace;

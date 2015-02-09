@@ -5,12 +5,12 @@
  * Esta exceção será lançada toda vez que um elemento de tipo incompatível for usado em um array, coleção, parâmetro, etc.
  * 
  * @author Vinicius C. de Lima <vinicius.c.lima03@gmail.com>
- * @package Object
+ * @package Object.Exceptions
  */
 
-namespace OpenMarketplace\Object;
+namespace OpenMarketplace\Object\Exceptions;
 
-use OpenMarketplace\Object\OMException;
+use OpenMarketplace\Object\OMException as OMException;
 
 class TypeMismatchException extends OMException {
 	/**
@@ -20,7 +20,7 @@ class TypeMismatchException extends OMException {
      */
     public function __construct($message = null, $code = 0) {
         if ( empty($message)) {
-            $message = 'Produto Inexistente';
+            $message = 'Tipo incorreto de item';
         }
         parent::__construct($message, $code);
     }

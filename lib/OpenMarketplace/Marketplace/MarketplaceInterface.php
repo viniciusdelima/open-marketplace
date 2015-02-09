@@ -9,6 +9,7 @@
  */
 
 namespace OpenMarketplace\Marketplace;
+use OpenMarketplace\Marketplace\ExternalItem\ExternalItem as ExternalItem;
 
 interface MarketplaceInterface {
     /**
@@ -20,12 +21,19 @@ interface MarketplaceInterface {
     public function setToken($token);
     
      /**
-     * Seta o token de sandbox
-     * 
-     * @param string $sandboxToken
-     * @return void
-     */
+      * Seta o token de sandbox
+      * 
+      * @param string $sandboxToken
+      * @return void
+      */
     public function setSandboxToken($sandboxToken);
+    
+    /**
+      * Retorna se o Marketplace está sendo usado em modo sandbox.
+      * 
+      * @return boolean
+      */
+    public function isSandbox();
     
     /**
      * Seta o Marketplace para o modo sandbox
@@ -36,48 +44,17 @@ interface MarketplaceInterface {
     public function setSandboxMode($mode);
     
     /**
-     * Adiciona um produto ao Marketplace.
+     * Adiciona um item ao Marketplace.
      * 
-     * @param Product $Product
+     * @param ExternalItem $ExternalItem
      * @return void
      */
-    public function addProduct($Product);
+    public function addExternalItem(ExternalItem $ExternalItem);
     
     /**
-     * Atualiza um produto no Marketplace
-     *
-     * @param Product $Product
-     * @return boolean
-     */
-    public function updateProduct($Product);
-    
-    /**
-     * Atualiza estoque no Marketplace
+     * Retorna um conjunto de itens
      * 
-     * @param Product $Product
-     * @return boolean
+     * @return Collection Coleção de ExternalItems
      */
-    public function updateStock($Product);
-    
-    /**
-     * Atualiza um Pedido no Marketplace
-     * 
-     * @param Order $Order
-     * @return boolean
-     */
-    public function updateOrder($Order);
-    
-    /**
-     * Retorna um conjunto de Produtos
-     * 
-     * @return Collection Coleção de Produtos
-     */
-    public function getProducts();
-    
-    /**
-     * Retorna um conjunto de Pedidos
-     * 
-     * @return Collection Coleção de Pedidos
-     */
-    public function getOrders();
+    public function getExternalItems();
 }

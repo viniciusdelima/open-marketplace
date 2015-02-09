@@ -4,10 +4,10 @@
  * Entidade responsável por representar uma coleção de pedidos
  *
  * @author Vinícius C. de Lima <vinicius.c.lima03@gmail.com>
- * @package Marketplace
+ * @package Marketplace.Order
  */
 
-namespace OpenMarketplace\Marketplace;
+namespace OpenMarketplace\Marketplace\Order;
 
 use OpenMarketplace\Object\Collection;
 

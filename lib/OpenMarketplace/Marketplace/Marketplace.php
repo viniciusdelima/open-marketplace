@@ -8,8 +8,10 @@
  */
 
 namespace OpenMarketplace\Marketplace;
+use OpenMarketplace\Marketplace\ExternalItem\ExternalItemsCollection as ExternalItemsCollection;
+use OpenMarketplace\Marketplace\ExternalItem\ExternalItem as ExternalItem;
 
-abstract class Marketplace implements MarketplaceInterface {
+class Marketplace implements MarketplaceInterface {
     /**
      * Token usado na conexão com o Marketplace
      * @name token
@@ -28,11 +30,19 @@ abstract class Marketplace implements MarketplaceInterface {
     
     /**
      * URL base para acesso a API do Marketplace
-     * @name baseUrl
+     * @name endpoint
      * @access private
      * @var string
      */
-    private $accessUrl;
+    private $endpoint;
+    
+    /**
+     * URL base para acesso a API de Sandbox do Marketplace
+     * @name sandboxEndpoint
+     * @access private
+     * @var string
+     */
+    private $sandboxEndpoint;
     
     /**
      * Indica se o Marketplace estará sendo usado no modo sandbox
@@ -43,12 +53,12 @@ abstract class Marketplace implements MarketplaceInterface {
     private $isSandbox = false;
     
     /**
-     * Coleção de produtos
-     * @name products
+     * Coleção de itens
+     * @name externalItems
      * @access protected
-     * @var ProductsCollection
+     * @var externalItemsCollection
      */
-    protected $products;
+    protected $externalItems;
     
     /**
      * Coleção de pedidos
@@ -60,13 +70,13 @@ abstract class Marketplace implements MarketplaceInterface {
     
     /**
      * Construtor da classe
-     * Cria as coleções de produtos e pedidos
+     * Cria as coleções de items e pedidos
      * 
      * @return void
      */
     public function __construct() {
-        $this->products = new ProductsCollection();
-        $this->orders   = new OrdersCollection();
+        $this->externalItems = new ExternalItemsCollection();
+        // $this->orders        = new OrdersCollection();
     }
     
     /**
@@ -111,60 +121,35 @@ abstract class Marketplace implements MarketplaceInterface {
      * @see MarketplaceInterface::setSandboxMode($mode)
      */
     public function setSandboxMode($mode) {
-        $this->sandbox = $mode;
+        $this->isSandbox = $mode;
     }
     
     /**
-     * Adiciona um produo ao Marketplace, caso o produto não possa ser adicionado uma excessão será lançada
+     * Retorna se o Marketplace está no modo sandbox
      * 
-     * @see MarketplaceInterface::addProduct($Product)
+     * @see MarketplaceInterface::isSandbox()
      */
-    public function addProduct(Product $Product) {
-        if ( ProductValidation::validate($Product)) {
-            $this->products->push($Product);  
-        }
+    public function isSandbox() {
+        return $this->isSandbox;
     }
     
     /**
-     * Atualiza um produto no Marketplace
+     * Adiciona um item ao Marketplace, caso o item não possa ser adicionado uma excessão será lançada
      * 
-     * @see MarketplaceInterface::updateProduct($Product)
+     * @see MarketplaceInterface::addExternalItem($ExternalItem)
      */
-    public function updateProduct(Product $Product) {
-        $this->products->update($Product);
+    public function addExternalItem(ExternalItem $ExternalItem) {
+        // if ( ExternalItem::validate($ExternalItem)) {
+            $this->externalItems->push($ExternalItem);  
+        // }
     }
     
     /**
-     * Método abstrato de atualização de estoque do Marketplace
+     * Retorna os items do Marketplace
      * 
-     * @see MarketplaceInterface::updateStock($Product)
+     * @see MarketplaceInterface::getExternalItems()
      */
-    abstract protected function updateStock(Product $Product);
-    
-    /**
-     * Atualiza um Pedido no Marketplace
-     * 
-     * @see MarketplaceInterface::updateOrder($Order)
-     */
-    public function updateOrder(Order $Order) {
-        $this->orders->update($Order);
-    }
-    
-    /**
-     * Retorna os produtos do Marketplace
-     * 
-     * @see MarketplaceInterface::getProducts()
-     */
-    public function getProducts() {
-        return $this->products->getEntries();
-    }
-    
-    /**
-     * Retorna os pedidos do Marketplace
-     * 
-     * @see MarketplaceInterface::getOrders()
-     */
-    public function getOrders() {
-        return $this->orders->getEntries();
+    public function getExternalItems() {
+        return $this->externalItems->getEntries();
     }
 }

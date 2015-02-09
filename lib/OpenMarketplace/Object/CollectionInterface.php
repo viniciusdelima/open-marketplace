@@ -12,10 +12,10 @@ interface CollectionInterface {
 	/**
 	 * Insere um elemento na coleção.
 	 * 
-	 * @param Object $element
+	 * @param Object $Element
 	 * @return void
 	 */
-	public function push($element);
+	public function push($Element);
 	
 	/**
 	 * Seleciona elementos dentro da coleção com base em um método de callback.
