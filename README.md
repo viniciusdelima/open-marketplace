@@ -6,4 +6,6 @@ O projeto Open Marketplace visa prover uma solução de fácil acesso, configura
 Nesta primeira fase estaremos criando a estrutura inicial do projeto e a integração com o Marketplace do Submarino (B2W) 
 e logo depois integraremos Walmart, Extra e Mercado Livre.
 
+Em breve...
+
 Vinícius Lima
